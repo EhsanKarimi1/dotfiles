@@ -7,6 +7,9 @@
 # https://github.com/EhsanKarimi1
 # my configuration for Alacritty, the GPU enhanced and Rust-based terminal emulator.
 
+#######################################
+##        Basic configuration        ##
+#######################################
 env:
   TERM: xterm-256color
 
@@ -32,8 +35,202 @@ window:
   title: Terminal
   dynamic_title: false
 
+scrolling:
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 5000
 
+#######################################
+##        Font configuration         ##
+#######################################
 font:
+
   normal:
-    family: monospace
+    family: JetBrainsMono
     style: Regular
+
+  bold:
+    family: JetBrainsMono
+    style: Bold
+
+  italic:
+    family: JetBrainsMono
+    style: Italic
+
+  bold_italic:
+    family: JetBrainsMono
+    style: Bold Italic
+
+# Point size
+  size: 12.0
+
+# Offset is the extra space around each character. `offset.y` can be thought of
+# as modifying the line spacing, and `offset.x` as modifying the letter spacing.
+  offset:
+    x: 0
+    y: 1
+
+use_thin_strokes: true
+draw_bold_text_with_bright_colors: true
+
+#######################################
+##    Color schemes configuration    ##
+#######################################
+schemes:
+
+  Dracula: &Dracula
+    primary:
+      background: '#282a36'
+      foreground: '#f8f8f2'
+    cursor:
+      text: CellBackground
+      cursor: CellForeground
+    vi_mode_cursor:
+      text: CellBackground
+      cursor: CellForeground
+    search:
+      matches:
+        foreground: '#44475a'
+        background: '#50fa7b'
+      focused_match:
+        foreground: '#44475a'
+        background: '#ffb86c'
+      bar:
+        background: '#282a36'
+        foreground: '#f8f8f2'
+    line_indicator:
+      foreground: None
+      background: None
+    selection:
+      text: CellForeground
+      background: '#44475a'
+    normal:
+      black:   '#000000'
+      red:     '#ff5555'
+      green:   '#50fa7b'
+      yellow:  '#f1fa8c'
+      blue:    '#bd93f9'
+      magenta: '#ff79c6'
+      cyan:    '#8be9fd'
+      white:   '#bfbfbf'
+    bright:
+      black:   '#4d4d4d'
+      red:     '#ff6e67'
+      green:   '#5af78e'
+      yellow:  '#f4f99d'
+      blue:    '#caa9fa'
+      magenta: '#ff92d0'
+      cyan:    '#9aedfe'
+      white:   '#e6e6e6'
+    dim:
+      black:   '#14151b'
+      red:     '#ff2222'
+      green:   '#1ef956'
+      yellow:  '#ebf85b'
+      blue:    '#4d5b86'
+      magenta: '#ff46b0'
+      cyan:    '#59dffc'
+      white:   '#e6e6d1'
+
+  GruvboxDark: &GruvboxDark
+    primary:
+      background: '#282828'
+      foreground: '#ebdbb2'
+    normal:
+      black:   '#282828'
+      red:     '#cc241d'
+      green:   '#98971a'
+      yellow:  '#d79921'
+      blue:    '#458588'
+      magenta: '#b16286'
+      cyan:    '#689d6a'
+      white:   '#a89984'
+    bright:
+      black:   '#928374'
+      red:     '#fb4934'
+      green:   '#b8bb26'
+      yellow:  '#fabd2f'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#ebdbb2'
+
+  OceanicNext: &OceanicNext
+    primary:
+      background: '#1b2b34'
+      foreground: '#d8dee9'
+    cursor:
+      text: '#1b2b34'
+      cursor: '#ffffff'
+    normal:
+      black:   '#343d46'
+      red:     '#EC5f67'
+      green:   '#99C794'
+      yellow:  '#FAC863'
+      blue:    '#6699cc'
+      magenta: '#c594c5'
+      cyan:    '#5fb3b3'
+      white:   '#d8dee9'
+    bright:
+      black:   '#343d46'
+      red:     '#EC5f67'
+      green:   '#99C794'
+      yellow:  '#FAC863'
+      blue:    '#6699cc'
+      magenta: '#c594c5'
+      cyan:    '#5fb3b3'
+      white:   '#d8dee9'
+
+  Omni: &Omni
+    primary:
+      background: '0x191622'
+      foreground: '0xe1e1e6'
+    cursor:
+      text: '0x191622'
+      cursor: '0xf8f8f2'
+    normal:
+      black: '0x000000'
+      red: '0xff5555'
+      green: '0x50fa7b'
+      yellow: '0xeffa78'
+      blue: '0xbd93f9'
+      magenta: '0xff79c6'
+      cyan: '0x8d79ba'
+      white: '0xbfbfbf'
+    bright:
+      black: '0x4d4d4d'
+      red: '0xff6e67'
+      green: '0x5af78e'
+      yellow: '0xeaf08d'
+      blue: '0xcaa9fa'
+      magenta: '0xff92d0'
+      cyan: '0xaa91e3'
+      white: '0xe6e6e6'
+    dim:
+      black: '0x000000'
+      red: '0xa90000'
+      green: '0x049f2b'
+      yellow: '0xa3b106'
+      blue: '0x530aba'
+      magenta: '0xbb006b'
+      cyan: '0x433364'
+      white: '0x5f5f5f'
+
+# choosing theme
+colors: *Dracula
+
+#######################################
+##    Key bindings configuration     ##
+#######################################
+key_bindings:
+
+  - { key: V,         mods: Control|Shift, action: Paste                       }
+  - { key: C,         mods: Control|Shift, action: Copy                        }
+  - { key: Insert,    mods: Shift,         action: PasteSelection              }
+  - { key: Equals,    mods: Control,       action: IncreaseFontSize            }
+  - { key: Plus,      mods: Control,       action: IncreaseFontSize            }
+  - { key: Minus,     mods: Control,       action: DecreaseFontSize            }
+  - { key: F11,       mods: None,          action: ToggleFullscreen            }
+  - { key: L,         mods: Control,       action: ClearLogNotice              }
+  - { key: Home,      mods: Shift,         action: ScrollToTop,    mode: ~Alt  }
+  - { key: End,       mods: Shift,         action: ScrollToBottom, mode: ~Alt  }
