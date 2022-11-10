@@ -128,7 +128,7 @@ alias h="history | grep "
 alias f="find . | grep "
 
 # Search running processes
-alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
+alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20"
 
 # Show open ports
 alias openports='netstat -nape --inet'
