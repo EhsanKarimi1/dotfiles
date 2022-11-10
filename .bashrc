@@ -1,0 +1,413 @@
+#  _               _
+# | |__   __ _ ___| |__  _ __ ___
+# | '_ \ / _` / __| '_ \| '__/ __|
+# | |_) | (_| \__ \ | | | | | (__
+# |_.__/ \__,_|___/_| |_|_|  \___|
+#
+# https://github.com/EhsanKarimi1
+# my configuration for .bashrc file, configuration file for using bash shell.
+
+#!/bin/bash
+
+#######################################
+##         Basic definitions         ##
+#######################################
+# Source global definitions
+if [ -f /etc/bashrc]; then
+	. /etc/bashrc
+fi
+
+# Enable bash programmable completion features in interactive shells
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+	. /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+	. /etc/bash_completion
+fi
+
+#######################################
+##             EXPORTS               ##
+#######################################
+# Disable the bell
+if [[ $iatest > 0 ]]; then bind "set bell-style visible"; fi
+
+# Expand the history size
+export HISTFILESIZE=10000
+export HISTSIZE=500
+
+# Don't put duplicate lines in the history and do not add lines that start with a space
+export HISTCONTROL=erasedups:ignoredups:ignorespace
+
+# Ignore case on auto-completion
+# Note: bind used instead of sticking these in .inputrc
+if [[ $iatest > 0 ]]; then bind "set completion-ignore-case on"; fi
+
+# Show auto-completion list automatically, without double tab
+if [[ $iatest > 0 ]]; then bind "set show-all-if-ambiguous On"; fi
+
+# Set the default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
+# To have colors for ls and all grep commands such as grep, egrep and zgrep
+export CLICOLOR=1
+export LS_COLORS='no=00:fi=00:di=00;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.xml=00;31:'
+#export GREP_OPTIONS='--color=auto' #deprecated
+alias grep="/usr/bin/grep $GREP_OPTIONS"
+unset GREP_OPTIONS
+
+# Set Keyboard language
+setxkbmap gb
+
+#######################################
+##          Alias commands           ##
+#######################################
+# Change directory aliases
+alias home='cd ~'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias cl='clear'
+alias w='cd ~/w'
+
+# Edit this .bashrc file
+alias ebrc='vi ~/.bashrc'
+
+# alias to show the date
+alias da='date "+%Y-%m-%d %B %A %T"'
+
+# Alias's to modified commands
+alias rm='rm -rf -iv'
+alias srm='sudo rm -rf -iv'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -p'
+alias ping='ping -c 10'
+alias vi='nvim'
+alias svi='sudo nvim'
+
+# Changing "ls" to "exa"
+alias la='exa -alh --color=always --group-directories-first --icons' # show all files (hidden/visible)
+alias law='exa -a --color=always --group-directories-first --icons' # wide view visible files
+alias l='exa -lh --color=always --group-directories-first --icons' # show visible files
+alias l.='exa -a | egrep "^\."' # show dotfiles
+alias lrec='exa -lRh --color=always --group-directories-first' # recursive ls
+alias lf="exa -l | egrep -v '^d'" # files only
+alias ldir="exa -l | egrep '^d'" # directories only
+
+# Alias's for multiple directory listing commands
+alias lsize='ls -lSrh --color=always --group-directories-first' # sort by size
+alias ldate='ls -ltrh --color=always --group-directories-first' # sort by date
+alias labc='ls -lap --color=always --group-directories-first' #alphabetical sort
+
+# Search command line history
+alias h="history | grep "
+
+# Search files in the current folder
+alias f="find . | grep "
+
+# Search running processes
+alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10"
+
+# Show open ports
+alias openports='netstat -nape --inet'
+
+# Alias's for safe and forced reboots
+alias rebootsafe='sudo shutdown -r now'
+alias rebootforce='sudo shutdown -r -n now'
+
+# Alias's for archives
+alias mktar='tar -cvf'
+alias mkbz2='tar -cvjf'
+alias mkgz='tar -cvzf'
+alias mkzip='zip -r'
+alias untar='tar -xvf'
+alias unbz2='tar -xvjf'
+alias ungz='tar -xvzf'
+
+# additional aliases
+alias py='python'
+alias dns='vi /etc/systemd/resolved.conf'
+alias dnsre='sudo systemctl restart systemd-resolved.service'
+alias hosts='vi /etc/hosts'
+alias neko='sudo ./Downloads/nekoray/launcher'
+
+### DNF package manager
+alias dnfin='sudo dnf install'
+alias dnfrm='sudo dnf autoremove'
+alias dnfup='sudo dnf update'
+alias dnfhi='dnf history'
+alias dnfse='dnf search'
+alias dnfcl='dnf clean all'
+
+### APT(nala) package manager
+alias nalain='sudo nala install'
+alias nalarm='sudo nala '
+alias nalaup='sudo nala update'
+alias nalahi='nala history' # sudo nala history undo [install num]
+alias nalafe='sudo nala fetch'
+
+# Show all logs in /var/log
+alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+
+# Adding flags
+alias df='df -h' # human-readable sizes
+
+# git
+alias addup='git add -u'
+alias addall='git add -A'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias stat='git status' # 'status' is protected name so using 'stat' instead 
+alias tag='git tag' 
+alias newtag='git tag -a'
+
+#######################################
+##         Specefic Aliases          ##
+#######################################
+# Alias's for SSH
+alias SERVERNAME='ssh root@[IP]'
+
+# Alias's to change the directory
+alias web='cd /var/www/html'
+
+#######################################
+##        Special functions          ##
+#######################################
+# Extracts any archive(s) (if unp isn't installed)
+extract () {
+	for archive in $*; do
+		if [ -f $archive ] ; then
+			case $archive in
+				*.tar.bz2)   tar xvjf $archive    ;;
+				*.tar.gz)    tar xvzf $archive    ;;
+				*.bz2)       bunzip2 $archive     ;;
+				*.rar)       rar x $archive       ;;
+				*.gz)        gunzip $archive      ;;
+				*.tar)       tar xvf $archive     ;;
+				*.tbz2)      tar xvjf $archive    ;;
+				*.tgz)       tar xvzf $archive    ;;
+				*.zip)       unzip $archive       ;;
+				*.Z)         uncompress $archive  ;;
+				*.7z)        7z x $archive        ;;
+				*)           echo "don't know how to extract '$archive'..." ;;
+			esac
+		else
+			echo "'$archive' is not a valid file!"
+		fi
+	done
+}
+
+ftext ()
+{
+	# -i case-insensitive
+	# -I ignore binary files
+	# -H causes filename to be printed
+	# -r recursive search
+	# -n causes line number to be printed
+	# optional: -F treat search term as a literal, not a regular expression
+	# optional: -l only print filenames and not the matching lines ex. grep -irl "$1" *
+	grep -iIHrn --color=always "$1" . | less -r
+}
+
+# Copy file with a progress bar
+cpp()
+{
+	set -e
+	strace -q -ewrite cp -- "${1}" "${2}" 2>&1 \
+	| awk '{
+	count += $NF
+	if (count % 10 == 0) {
+		percent = count / total_size * 100
+		printf "%3d%% [", percent
+		for (i=0;i<=percent;i++)
+			printf "="
+			printf ">"
+			for (i=percent;i<100;i++)
+				printf " "
+				printf "]\r"
+			}
+		}
+	END { print "" }' total_size=$(stat -c '%s' "${1}") count=0
+}
+
+# Copy and go to the directory
+cpg ()
+{
+	if [ -d "$2" ];then
+		cp $1 $2 && cd $2
+	else
+		cp $1 $2
+	fi
+}
+
+# Move and go to the directory
+mvg ()
+{
+	if [ -d "$2" ];then
+		mv $1 $2 && cd $2
+	else
+		mv $1 $2
+	fi
+}
+
+# Create and go to the directory
+mkdirg ()
+{
+	mkdir -p $1
+	cd $1
+}
+
+# Show the current distribution
+distribution ()
+{
+	local dtype
+	# Assume unknown
+	dtype="unknown"
+	
+	# First test against Fedora / RHEL / CentOS / generic Redhat derivative
+	if [ -r /etc/rc.d/init.d/functions ]; then
+		source /etc/rc.d/init.d/functions
+		[ zz`type -t passed 2>/dev/null` == "zzfunction" ] && dtype="redhat"
+	
+	# Then test against SUSE (must be after Redhat,
+	# I've seen rc.status on Ubuntu I think? TODO: Recheck that)
+	elif [ -r /etc/rc.status ]; then
+		source /etc/rc.status
+		[ zz`type -t rc_reset 2>/dev/null` == "zzfunction" ] && dtype="suse"
+	
+	# Then test against Debian, Ubuntu and friends
+	elif [ -r /lib/lsb/init-functions ]; then
+		source /lib/lsb/init-functions
+		[ zz`type -t log_begin_msg 2>/dev/null` == "zzfunction" ] && dtype="debian"
+	
+	# Then test against Gentoo
+	elif [ -r /etc/init.d/functions.sh ]; then
+		source /etc/init.d/functions.sh
+		[ zz`type -t ebegin 2>/dev/null` == "zzfunction" ] && dtype="gentoo"
+	
+	# For Mandriva we currently just test if /etc/mandriva-release exists
+	# and isn't empty (TODO: Find a better way :)
+	elif [ -s /etc/mandriva-release ]; then
+		dtype="mandriva"
+
+	# For Slackware we currently just test if /etc/slackware-version exists
+	elif [ -s /etc/slackware-version ]; then
+		dtype="slackware"
+
+	fi
+	echo $dtype
+}
+
+# Show the current version of the operating system
+ver ()
+{
+	local dtype
+	dtype=$(distribution)
+
+	if [ $dtype == "redhat" ]; then
+		if [ -s /etc/redhat-release ]; then
+			cat /etc/redhat-release && uname -a
+		else
+			cat /etc/issue && uname -a
+		fi
+	elif [ $dtype == "suse" ]; then
+		cat /etc/SuSE-release
+	elif [ $dtype == "debian" ]; then
+		lsb_release -a
+		# sudo cat /etc/issue && sudo cat /etc/issue.net && sudo cat /etc/lsb_release && sudo cat /etc/os-release # Linux Mint option 2
+	elif [ $dtype == "gentoo" ]; then
+		cat /etc/gentoo-release
+	elif [ $dtype == "mandriva" ]; then
+		cat /etc/mandriva-release
+	elif [ $dtype == "slackware" ]; then
+		cat /etc/slackware-version
+	else
+		if [ -s /etc/issue ]; then
+			cat /etc/issue
+		else
+			echo "Error: Unknown distribution"
+			exit 1
+		fi
+	fi
+}
+
+#######################################
+##     Server Special functions      ##
+#######################################
+# View Apache logs
+apachelog ()
+{
+	if [ -f /etc/httpd/conf/httpd.conf ]; then
+		cd /var/log/httpd && ls -xAh && multitail --no-repeat -c -s 2 /var/log/httpd/*_log
+	else
+		cd /var/log/apache2 && ls -xAh && multitail --no-repeat -c -s 2 /var/log/apache2/*.log
+	fi
+}
+
+# Edit the Apache configuration
+apacheconfig ()
+{
+	if [ -f /etc/httpd/conf/httpd.conf ]; then
+		sedit /etc/httpd/conf/httpd.conf
+	elif [ -f /etc/apache2/apache2.conf ]; then
+		sedit /etc/apache2/apache2.conf
+	else
+		echo "Error: Apache config file could not be found."
+		echo "Searching for possible locations:"
+		sudo updatedb && locate httpd.conf && locate apache2.conf
+	fi
+}
+
+# Edit the PHP configuration file
+phpconfig ()
+{
+	if [ -f /etc/php.ini ]; then
+		sedit /etc/php.ini
+	elif [ -f /etc/php/php.ini ]; then
+		sedit /etc/php/php.ini
+	elif [ -f /etc/php5/php.ini ]; then
+		sedit /etc/php5/php.ini
+	elif [ -f /usr/bin/php5/bin/php.ini ]; then
+		sedit /usr/bin/php5/bin/php.ini
+	elif [ -f /etc/php5/apache2/php.ini ]; then
+		sedit /etc/php5/apache2/php.ini
+	else
+		echo "Error: php.ini file could not be found."
+		echo "Searching for possible locations:"
+		sudo updatedb && locate php.ini
+	fi
+}
+
+# Edit the MySQL configuration file
+mysqlconfig ()
+{
+	if [ -f /etc/my.cnf ]; then
+		sedit /etc/my.cnf
+	elif [ -f /etc/mysql/my.cnf ]; then
+		sedit /etc/mysql/my.cnf
+	elif [ -f /usr/local/etc/my.cnf ]; then
+		sedit /usr/local/etc/my.cnf
+	elif [ -f /usr/bin/mysql/my.cnf ]; then
+		sedit /usr/bin/mysql/my.cnf
+	elif [ -f ~/my.cnf ]; then
+		sedit ~/my.cnf
+	elif [ -f ~/.my.cnf ]; then
+		sedit ~/.my.cnf
+	else
+		echo "Error: my.cnf file could not be found."
+		echo "Searching for possible locations:"
+		sudo updatedb && locate my.cnf
+	fi
+}
+
+#######################################
+##            Starship               ##
+#######################################
+# Install Starship - curl -sS https://starship.rs/install.sh | sh
+eval "$(starship init bash)"
