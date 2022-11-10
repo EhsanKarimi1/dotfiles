@@ -1,0 +1,60 @@
+#  ____  _                 _     _       
+# / ___|| |_ __ _ _ __ ___| |__ (_)_ __  
+# \___ \| __/ _` | '__/ __| '_ \| | '_ \ 
+#  ___) | || (_| | |  \__ \ | | | | |_) |
+# |____/ \__\__,_|_|  |___/_| |_|_| .__/ 
+#                                 |_|    
+#
+# https://github.com/EhsanKarimi1
+# my starship.toml config file.
+
+format = """
+[](#3B4252)\
+$username\
+[](bg:#434C5E fg:#3B4252)\
+$directory\
+[](fg:#434C5E bg:#6272a4)\
+$git_branch\
+$git_status\
+[ ](fg:#6272a4)\
+"""
+
+command_timeout = 5000
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like  to save some space
+[username]
+show_always = true
+style_user = "bg:#3B4252"
+style_root = "bg:#3B4252"
+format = '[$user ]($style)'
+
+[directory]
+style = "bg:#434C5E"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
+
+[git_branch]
+symbol = ""
+style = "bg:#6272a4"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#6272a4"
+format = '[$all_status$ahead_behind ]($style)'
+
