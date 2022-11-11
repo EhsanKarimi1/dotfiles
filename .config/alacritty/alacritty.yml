@@ -35,6 +35,8 @@ window:
   title: Terminal
   dynamic_title: false
 
+
+
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -48,6 +50,36 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
   # When set to `true`, selected text will be copied to the primary clipboard.
   save_to_clipboard: false
+
+# Visual Bell
+#
+# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
+# rung, the terminal background will be set to white and transition back to the
+# default background color. You can control the rate of this transition by
+# setting the `duration` property (represented in milliseconds). You can also
+# configure the transition function by setting the `animation` property.
+#
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+# Specifying a `duration` of `0` will disable the visual bell.
+#visual_bell:
+#  animation: EaseOutExpo
+#  duration: 0
+#  color: '#ffffff'
+
+# Startup directory
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+#working_directory: None
 
 cursor:
   # Cursor style
