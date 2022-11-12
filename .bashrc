@@ -169,7 +169,7 @@ alias nalahi='nala history' # sudo nala history undo [install num]
 alias nalafe='sudo nala fetch'
 
 # Show all logs in /var/log
-alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
+alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f | less"
 
 # Adding flags
 alias df='df -h' # human-readable sizes
