@@ -1,12 +1,3 @@
-#  _               _
-# | |__   __ _ ___| |__  _ __ ___
-# | '_ \ / _` / __| '_ \| '__/ __|
-# | |_) | (_| \__ \ | | | | | (__
-# |_.__/ \__,_|___/_| |_|_|  \___|
-#
-# https://github.com/EhsanKarimi1
-# my configuration for .bashrc file, configuration file for using bash shell.
-
 #!/bin/bash
 
 #######################################
@@ -122,10 +113,10 @@ alias ldate='ls -ltrh --color=always --group-directories-first' # sort by date
 alias labc='ls -lap --color=always --group-directories-first' #alphabetical sort
 
 # Search command line history
-alias h="history | grep "
+alias h="history | grep"
 
 # Search files in the current folder
-alias f="find . | grep "
+alias f="find . | grep"
 
 # Search running processes
 alias topcpu="/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20"
@@ -148,9 +139,9 @@ alias ungz='tar -xvzf'
 
 # additional aliases
 alias py='python'
-alias dns='vi /etc/systemd/resolved.conf'
+alias dns='sudo vi /etc/systemd/resolved.conf'
 alias dnsre='sudo systemctl restart systemd-resolved.service'
-alias hosts='vi /etc/hosts'
+alias hosts='sudo vi /etc/hosts'
 alias neko='sudo ./Downloads/nekoray/launcher'
 
 ### DNF package manager
