@@ -13,6 +13,7 @@ myTerm = "kitty"
 myBrowser = "./Downloads/firefox/firefox"
 code = "subl"
 rofi = "rofi -show drun"
+window= "rofi -show window"
 pavu = "pavucontrol"
 
 color = {
@@ -59,6 +60,7 @@ keys = [
     Key([mod], "b", lazy.spawn(myBrowser)),
     Key([mod], "s", lazy.spawn(code)),
     Key([mod], "r", lazy.spawn(rofi)),
+    Key([mod], "p", lazy.spawn(window)),
 ]
 
 groups = [
