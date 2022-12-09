@@ -10,6 +10,7 @@ mod = "mod4"
 modkey = "mod5"
 modfloat= "mod1"
 myTerm = "kitty"
+myTerm2 = "alacritty"
 myBrowser = "./Downloads/firefox/firefox"
 code = "subl"
 rofi = "rofi -show drun"
@@ -17,7 +18,7 @@ window= "rofi -show window"
 pavu = "pavucontrol"
 
 color = {
-    'background': '#21222c',
+    'background': '#282a37',
     'foreground': '#f8f8f2',
     'floating': '#8be9fd',
 }
@@ -57,6 +58,7 @@ keys = [
 
     # Run Programs
     Key([mod], "Return", lazy.spawn(myTerm)),
+    Key([mod], "o", lazy.spawn(myTerm2)),
     Key([mod], "b", lazy.spawn(myBrowser)),
     Key([mod], "s", lazy.spawn(code)),
     Key([mod], "r", lazy.spawn(rofi)),
@@ -66,13 +68,13 @@ keys = [
 groups = [
         Group('1', label="", matches=[Match(wm_class=["firefox"])], layout="columns"),
         Group('2', label="", layout="columns"),
-        Group('3', label="", matches=[Match(wm_class=["Sublime_text"])], layout="columns"),
+        Group('3', label="", matches=[Match(wm_class=["Sublime_text","Code"])], layout="columns"),
         Group('4', label=""),
         Group('5', label="", matches=[Match(wm_class=["TelegramDesktop"])], layout="columns"),
-        Group('6', label=""),
-        Group('7', label=""),
-        Group('8', label="", matches=[Match(wm_class=["filen-desktop"])], layout="floating"),
-        Group('9', label="", matches=[Match(wm_class=["nekoray"])], layout="floating"),
+        Group('6', label=""),
+        Group('7', label=""),
+        Group('8', label="", matches=[Match(wm_class=[""])], layout="floating"),
+        # Group('9', label="", matches=[Match(wm_class=[""])], layout="floating"),
         ]
 
 for i in groups:
@@ -94,8 +96,8 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus="f6e71d",border_focus_stack="f6e71d", border_width=3, margin=7),
-     layout.MonadTall(border_focus="f6e71d",border_width=3, margin=7),
+    layout.Columns(border_focus="f6e71d",border_focus_stack="f6e71d", border_width=3, margin=8),
+    layout.MonadTall(border_focus="f6e71d",border_width=3, margin=7),
     layout.Floating(),
     layout.Max(),
 
@@ -110,7 +112,7 @@ mouse = [
 widget_defaults = dict(
     font="sans",
     fontsize=12,
-    padding=3,
+    padding=6,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -118,26 +120,36 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Image(filename='~/logo.png', scale = "False",margin=3, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(rofi)}),
+                widget.Image(filename='~/logo-dark.png',background='b98ef7', scale = "False",margin=3, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(rofi)}),
+                # widget.Spacer(length=10, background=None),
                 widget.Prompt(prompt='Run: '),
-                widget.GroupBox(highlight_method='text', active='8d99bf', inactive='44475a',this_current_screen_border='f5d10d', fontsize=22, use_mouse_wheel="true", urgent_alert_method='text', urgent_text="ff5555", disable_drag="true"),
+                widget.GroupBox(highlight_method='text', active='8d99bf', inactive='44475a',this_current_screen_border='f5d10d', fontsize=16, use_mouse_wheel="true", urgent_alert_method='text', urgent_text="ff5555", disable_drag="true"),
                 widget.WindowName(),
-                #widget.Spacer(),
-                widget.Systray(icon_size=20,padding=6),
-                widget.Sep(foreground='44475a',padding=10),
+                # widget.Spacer(),
+                # widget.Sep(foreground='44475a',padding=10),
+                # widget.NetGraph(graph_color='f6e71d', border_color='21222c', type='line', line_width=2, margin_y=5, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e nload -m enp0s29f7u1 nekoray-tun lo')}),
                 widget.WidgetBox(widgets=[
-                widget.NetGraph(graph_color='f6e71d', border_color='21222c', type='line', line_width=2, margin_y=5, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e nload -m enp0s29f7u1 nekoray-tun lo')}),
-                widget.Memory(mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')}),
-                widget.CPUGraph(border_color="21222c", mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')}),
-                ]
-                ,text_closed="<=", text_open='=>',close_button_location='right'),
+                widget.Image(filename='~/wired.png', scale = "False",margin_y=5,mouse_callbacks = {'Button1' : lambda: qtile.cmd_spawn(myTerm2 + ' -e nload -m enp0s29f7u1 lo')}),
+                widget.Net(interface="enp0s29f7u1",format='{down}↓↑{up}',mouse_callbacks = {'Button1' : lambda: qtile.cmd_spawn(myTerm2 + ' -e nload -m enp0s29f7u1 lo')}),
                 widget.Sep(foreground='44475a',padding=6),
-                widget.Volume(padding=6,fmt=' : {}', fontsize=16,scroll_step=10, mouse_callbacks = {'Button3': lambda: qtile.cmd_spawn(pavu)}),
-                widget.Clock(format="%I:%M %p", fontsize=14),
-                widget.CurrentLayoutIcon(scale=0.8),
+                widget.Image(filename='~/memory.png', scale = "False", margin_y=2,mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm2 + ' -e htop')}),
+                widget.Memory(mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')}),
+                    ],text_closed="",text_open="",close_button_location='right',fontsize='18'
+                ),
+                widget.Spacer(length=5, background=None),
+                # widget.CPUGraph(border_color="21222c", mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')}),
+                widget.Sep(foreground='44475a',padding=6),
+                widget.Systray(icon_size=20,padding=6),
+                widget.Spacer(length=5, background=None),
+                widget.Sep(foreground='44475a',padding=6),
+                widget.CurrentLayoutIcon(scale=0.6),
+                # widget.Spacer(length=10, background=None),
+                widget.Volume(padding=0,fmt='  {}', fontsize=16,scroll_step=10, mouse_callbacks = {'Button3': lambda: qtile.cmd_spawn(pavu)}),
+                widget.Spacer(length=10, background=None),
+                widget.Clock(background='5bfafa',foreground='000000',font="Ubuntu Bold",fontsize=15,format="%I:%M %p"),
 
             ],
-            30,background=color['background'],
+            35,background=color['background'],margin=8,
         ),
     ),
 ]
