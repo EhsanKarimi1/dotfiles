@@ -3,7 +3,7 @@
 <p align="center">
 	<!-- Project Logo -->
 	<a href="https://github.com/EhsanKarimi1/dotfiles">
-		<img src="images/logo.png" alt="" height="100">
+		<img src="images/logo.png" alt="" height="200">
 	</a>
 	<!-- short definition -->
 	<h3 align="center">Configs for make modern linux Desktop</h3>
