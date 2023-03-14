@@ -42,7 +42,7 @@
 </details>
 
 ## About the Project
-This project contain my dotfiles and my config files for making modern and simple Desktop on unix-like operating systems, this repo contains this technology and softwares:
+This project contain my dotfiles and my config files for making modern and simple Desktop on unix-like operating systems, this repo contains these technologies and softwares:
 
 ### bash
 <p align="center"><img src="images/bash.png" alt="bash" height="100"></p>
