@@ -11,7 +11,7 @@ modkey = "mod5"
 modfloat= "mod1"
 myTerm = "kitty"
 myTerm2 = "alacritty"
-myBrowser = "./Downloads/firefox/firefox"
+myBrowser = "./programs/firefox/firefox"
 code = "subl"
 rofi = "rofi -show drun"
 window= "rofi -show window"
@@ -120,7 +120,7 @@ screens = [
     Screen(
         top=bar.Bar(
             [
-                widget.Image(filename='~/logo-dark.png',background='b98ef7', scale = "False",margin=3, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(rofi)}),
+                widget.Image(filename='~/.config/qtile/images/logo-dark.png',background='b98ef7', scale = "False",margin=3, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(rofi)}),
                 # widget.Spacer(length=10, background=None),
                 widget.Prompt(prompt='Run: '),
                 widget.GroupBox(highlight_method='text', active='8d99bf', inactive='44475a',this_current_screen_border='f5d10d', fontsize=16, use_mouse_wheel="true", urgent_alert_method='text', urgent_text="ff5555", disable_drag="true"),
@@ -129,10 +129,10 @@ screens = [
                 # widget.Sep(foreground='44475a',padding=10),
                 # widget.NetGraph(graph_color='f6e71d', border_color='21222c', type='line', line_width=2, margin_y=5, mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e nload -m enp0s29f7u1 nekoray-tun lo')}),
                 widget.WidgetBox(widgets=[
-                widget.Image(filename='~/wired.png', scale = "False",margin_y=5,mouse_callbacks = {'Button1' : lambda: qtile.cmd_spawn(myTerm2 + ' -e nload -m enp0s29f7u1 lo')}),
+                widget.Image(filename='~/.config/qtile/images/wired.png', scale = "False",margin_y=5,mouse_callbacks = {'Button1' : lambda: qtile.cmd_spawn(myTerm2 + ' -e nload -m enp0s29f7u1 lo')}),
                 widget.Net(interface="enp0s29f7u1",format='{down}↓↑{up}',mouse_callbacks = {'Button1' : lambda: qtile.cmd_spawn(myTerm2 + ' -e nload -m enp0s29f7u1 lo')}),
                 widget.Sep(foreground='44475a',padding=6),
-                widget.Image(filename='~/memory.png', scale = "False", margin_y=2,mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm2 + ' -e htop')}),
+                widget.Image(filename='~/.config/qtile/images/memory.png', scale = "False", margin_y=2,mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm2 + ' -e htop')}),
                 widget.Memory(mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerm + ' -e htop')}),
                     ],text_closed="",text_open="",close_button_location='right',fontsize='18'
                 ),
