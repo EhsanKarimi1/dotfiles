@@ -43,7 +43,7 @@
 
 ## information
 ### bash
-<img src="images/bash.png" alt="bash" height="100">
+<img src="images/bash.png" align="center" alt="bash" height="100">
 .bashrc is a Bash shell script that Bash runs whenever it is started interactively. It initializes an interactive shell session. You can put any command in that file that you could type at the command prompt.
 
 You put commands here to set up the shell for use in your particular environment, or to customize things to your preferences.
