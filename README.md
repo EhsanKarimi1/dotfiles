@@ -41,7 +41,7 @@
   </ol>
 </details>
 
-## information
+## About the Project
 ### bash
 <p align="center"><img src="images/bash.png" alt="bash" height="100"></p>
 .bashrc is a Bash shell script that Bash runs whenever it is started interactively. It initializes an interactive shell session. You can put any command in that file that you could type at the command prompt.
@@ -56,3 +56,10 @@ for window manager i choosed Tiling window managers because those are fast and s
 
 
 
+
+
+
+
+
+## License
+Distributed under MIT license. See [`LICENSE`](https://github.com/EhsanKarimi1/dotfiles/blob/main/LICENSE) for more information.
