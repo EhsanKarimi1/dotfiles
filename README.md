@@ -56,7 +56,14 @@ i used JetBrainsMono font family (JetBrains Mono is a free and open-source typef
 ### Window Manager
 for window manager i choosed Tiling window managers because those are fast and simple and for this case [Sway tiling window manager](https://github.com/swaywm/sway) is good choice.
 
-
+### Binary Tools
+tmux
+exa
+sxiv
+feh
+bat
+neovim
+starship
 
 
 
