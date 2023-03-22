@@ -1,9 +1,9 @@
 <!-- header -->
 <br>
 <p align="center">
-	<!-- Project Logo -->
+	<!-- screenshot -->
 	<a href="https://github.com/EhsanKarimi1/dotfiles">
-		<img src="images/logo.png" alt="" height="200">
+		<img src="images/screenshot.png" alt="" height="200">
 	</a>
 	<!-- short definition -->
 	<h3 align="center">Configs for make modern linux Desktop</h3>
