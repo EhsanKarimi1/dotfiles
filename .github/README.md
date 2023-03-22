@@ -54,8 +54,8 @@ one of the beautiful things about UNIX-like operating systems, is how easily cus
 You put commands here to set up the shell for use in your particular environment, or to customize things to your preferences.
 
 ### fonts
-- **JetBrainsMono** font family (JetBrains Mono is a free and open-source typeface available under the [SIL Open Font License 1.1 license](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt)).
-- **vazirmatn** font family (vazirmatn font is licensed under the [SIL Open Font License, Version 1.1.](https://github.com/rastikerdar/vazirmatn/blob/master/OFL.txt)).
+- **JetBrainsMono** (JetBrains Mono is a free and open-source typeface available under the [SIL Open Font License 1.1 license](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt)).
+- **Vazirmatn** (vazirmatn font is licensed under the [SIL Open Font License, Version 1.1.](https://github.com/rastikerdar/vazirmatn/blob/master/OFL.txt)).
 
 
 ### Window Manager
