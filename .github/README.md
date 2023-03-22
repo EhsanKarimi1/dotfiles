@@ -25,7 +25,7 @@
   <summary>List of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#intro">Introduction</a>
       <ul>
       	<li><a href="#bash">bash</a></li>
         <li><a href="#fonts">fonts</a></li>
@@ -41,8 +41,8 @@
   </ol>
 </details>
 
-## About the Project
-This project contain my dotfiles and my config files for making modern and simple Desktop on unix-like operating systems, this repo contains these technologies and softwares:
+## Introduction
+one of the beautiful things about UNIX-like operating systems, is how easily customizable everything is. most of the time custom configurations are stored in files that start with dot and usually located in in home directory `~` or in `.config` for programs respect to the XDG Base Directory Specification. in this repository you can seek my dotfiles.
 
 ### bash
 <p align="center"><img src="images/bash.png" alt="bash" height="100"></p>
