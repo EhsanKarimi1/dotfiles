@@ -55,7 +55,7 @@ You put commands here to set up the shell for use in your particular environment
 
 ### fonts
 - **JetBrainsMono** (JetBrains Mono is a free and open-source typeface available under the [SIL Open Font License 1.1 license](https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt)).
-- **Vazirmatn** (vazirmatn font is licensed under the [SIL Open Font License, Version 1.1.](https://github.com/rastikerdar/vazirmatn/blob/master/OFL.txt)).
+- **Vazirmatn** (Vazirmatn is licensed under the [SIL Open Font License, Version 1.1.](https://github.com/rastikerdar/vazirmatn/blob/master/OFL.txt)).
 
 
 ### Window Manager
