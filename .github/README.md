@@ -69,7 +69,7 @@ feh
 bat
 neovim
 starship
-
+bash
 
 
 
